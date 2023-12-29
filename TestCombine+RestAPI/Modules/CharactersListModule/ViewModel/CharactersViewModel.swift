@@ -8,19 +8,19 @@
 import Foundation
 import Combine
 
-protocol CharactersListViewModelProtocol {
+protocol CharactersListViewModelDelegate {
     func getCharactersData(name: String?, gender: String?, status: String?)
     var namesPubliser: Published<[String]>.Publisher { get }
 }
 
-class CharactersViewModel: CharactersListViewModelProtocol {
+class CharactersViewModel: CharactersListViewModelDelegate {
     
-    private let networkLayer: NetworkLayerInterface
+    private let networkLayer: NetworkLayerDelegate
     @Published var names: [String]
     var namesPubliser: Published<[String]>.Publisher { $names }
     private var cancellableSet: Set<AnyCancellable>
     
-    init(networkLayer: NetworkLayerInterface = NetworkLayer(),
+    init(networkLayer: NetworkLayerDelegate = NetworkLayer(),
          names: [String] = [],
          cancellableSet: Set<AnyCancellable> = []) {
         self.networkLayer = networkLayer

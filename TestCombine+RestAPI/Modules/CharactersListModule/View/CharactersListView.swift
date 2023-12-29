@@ -20,7 +20,7 @@ class CharactersListView: UIViewController {
     @IBOutlet weak var statusPicker: UIPickerView!
     @IBOutlet weak var charactersTableView: UITableView!
     
-    private var viewModel: CharactersListViewModelProtocol?
+    private var viewModel: CharactersListViewModelDelegate?
     private var charactersNames = ["rick", "morty"]
     private var genderArray = ["female", "male", "genderless", "unknown"]
     private var statusArray = ["alive", "dead", "unknown"]

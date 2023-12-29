@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-protocol NetworkLayerInterface {
+protocol NetworkLayerDelegate {
     func getData(name: String?, gender: String?, status: String?) -> any Publisher<Data, CombineError>
 }
 
-class NetworkLayer: NetworkLayerInterface {
+class NetworkLayer: NetworkLayerDelegate {
             
     func getData(name: String?, gender: String?, status: String?) -> any Publisher<Data, CombineError> {
         guard let inputName = name,
